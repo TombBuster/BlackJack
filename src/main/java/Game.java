@@ -32,9 +32,10 @@ public class Game {
         return total;
     }
 
-    void result(int total, Player dealer, Deck newDeck) {
+    int result(int total, Player dealer, Deck newDeck) {
         if (total > 21) {
             System.out.println("You went bust!");
+            return -1;
         } else {
             int dealerTotal = dealer.getTotal();
             while (dealerTotal < 17) {
@@ -47,10 +48,13 @@ public class Game {
             System.out.println(dealerTotal + "\n");
             if(total > dealerTotal || dealerTotal > 21) {
                 System.out.println("You won!");
+                return 1;
             } else if(total == dealerTotal) {
                 System.out.println("You drew!");
+                return 0;
             } else {
                 System.out.println("You lost.");
+                return -1;
             }
         }
     }

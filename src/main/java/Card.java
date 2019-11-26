@@ -34,7 +34,7 @@ public class Card {
 
             private int value;
 
-            private Rank(final int value) {
+            Rank(final int value) {
                 this.value = value;
             }
 

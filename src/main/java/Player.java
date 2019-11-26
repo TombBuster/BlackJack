@@ -5,16 +5,12 @@ public class Player {
     private List<Card> cards;
     private String choice;
 
-    public Player(List<Card> cards) {
-        this.cards = cards;
-    }
-
     public void addCard(List<Card> card) {
         this.cards.add(card.get(0));
     }
 
-    public List<Card> getCards() {
-        return cards;
+    void setCards(List<Card> cards) {
+        this.cards = cards;
     }
 
     public void showCards() {
