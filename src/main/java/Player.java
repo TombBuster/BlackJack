@@ -76,7 +76,6 @@ public class Player {
                 }
             }
         }
-        System.out.println("Your sum is " + total);
         return total;
     }
 }
