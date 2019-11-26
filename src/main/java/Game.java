@@ -2,13 +2,15 @@ import java.util.Scanner;
 
 public class Game {
 
-    void welcome() {
+    void welcome() throws InterruptedException {
         System.out.println("Welcome to BlackJack!\n");
+        Thread.sleep(1000);
     }
 
-    int playerPlay(Player player, Deck newDeck) {
+    int playerPlay(Player player, Deck newDeck) throws InterruptedException {
         boolean isStick = false;
-        System.out.println("Your Cards: \n");
+        Thread.sleep(500);
+        System.out.println("\nYour Cards: \n");
         player.showCards();
         int total = player.getTotal();
         System.out.println("\nYour sum is " + total + "\n");
@@ -24,6 +26,7 @@ public class Game {
             System.out.println("Your Cards: \n");
             player.showCards();
             total = player.getTotal();
+            Thread.sleep(500);
             System.out.println("\nYour sum is " + total);
             if (total > 21) {
                 isStick = true;
@@ -32,7 +35,7 @@ public class Game {
         return total;
     }
 
-    int result(int total, Player dealer, Deck newDeck) {
+    int result(int total, Player dealer, Deck newDeck) throws InterruptedException {
         if (total > 21) {
             System.out.println("You went bust!");
             return -1;

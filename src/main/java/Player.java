@@ -13,15 +13,17 @@ public class Player {
         this.cards = cards;
     }
 
-    public void showCards() {
+    public void showCards() throws InterruptedException {
         for (Card i: cards) {
+            Thread.sleep(500);
             System.out.print(i.getRank() + " OF ");
             System.out.println(i.getSuit());
         }
     }
 
-    public void setChoice() {
+    public void setChoice() throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
+        Thread.sleep(500);
         System.out.println("Stick or twist?");
         boolean isValidChoice = false;
         String player1Choice = "T";
