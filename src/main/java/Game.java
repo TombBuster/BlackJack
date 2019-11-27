@@ -93,7 +93,7 @@ public class Game {
         String replay;
         while (true) {
             replay = scanner.nextLine();
-            if (replay.equals("y")) {
+            if (replay.equalsIgnoreCase("y")) {
                 return true;
             } else if (replay.equals("n")) {
                 return false;
