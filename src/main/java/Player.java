@@ -32,7 +32,9 @@ public class Player {
             System.out.println("Please choose an option: ");
             player1Choice = scanner.nextLine();
             // Case insensitive
-            player1Choice = player1Choice.substring(0, 1).toUpperCase() + player1Choice.substring(1).toLowerCase();
+            if (!player1Choice.equals("")) {
+                player1Choice = player1Choice.substring(0, 1).toUpperCase() + player1Choice.substring(1).toLowerCase();
+            }
             for (String choice : choices) {
                 if (player1Choice.equals(choice)) {
                     isValidChoice = true;

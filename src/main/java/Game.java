@@ -93,9 +93,9 @@ public class Game {
         String replay;
         while (true) {
             replay = scanner.nextLine();
-            if (replay.equalsIgnoreCase("y")) {
+            if (replay.equalsIgnoreCase("y") || replay.equalsIgnoreCase("yes")) {
                 return true;
-            } else if (replay.equals("n")) {
+            } else if (replay.equalsIgnoreCase("n") || replay.equalsIgnoreCase("no")) {
                 return false;
             } else {
                 System.out.println("Invalid input. Please enter either y or n.");

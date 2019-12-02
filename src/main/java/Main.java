@@ -34,26 +34,46 @@ public class Main {
             dealer.setCards(dealerHand);
             System.out.println("\nDealer's face up card is:");
             dealer.showCards();
-            dealerHand = newDeck.getCards(1);
+            List<Card> dealerSecondHand = newDeck.getCards(1);
+            dealerHand.addAll(dealerSecondHand);
             dealer.setCards(dealerHand);
 
             //Letting the players stick or twist
             List<Integer> betterTotals = new ArrayList<>();
+            int min = 22;
+            boolean isDealerPlaying = false;
             for (int i = 0; i < numPlayers; i++) {
                 betterTotals.add(game.playerPlay(betters.get(i), newDeck));
+                if (betterTotals.get(i) < min) {
+                         isDealerPlaying = true;
+                }
             }
             //Letting the dealer stick or twist, and then determining whether the player won or lost.
-
-            int dealerTotal = game.dealerPlay(dealer, newDeck);
+                 int dealerTotal = 21;
+            if (isDealerPlaying) {
+                dealerTotal = game.dealerPlay(dealer, newDeck);
+            }
+           int maxBalance = 0;
+            List<Better> newBetters = new ArrayList<>();
             for (int i = 0; i < numPlayers; i++) {
                 int result = game.result(betterTotals.get(i), dealerTotal, betters.get(i).getName());
                 betters.get(i).addToBalance(result);
                 int balance = betters.get(i).getBalance();
+                if (balance > 0) {
+                    maxBalance = balance;
+                    newBetters.add(betters.get(i));
+                }
                 if (balance == 0) {
                     System.out.println("You've run out of money!");
                 }
             }
-            isReplay = game.isReplay();
+            if (maxBalance == 0) {
+                isReplay = false;
+            } else {
+                isReplay = game.isReplay();
+            }
+            betters = newBetters;
+            numPlayers = betters.size();
         }
             for (int i = 0; i < numPlayers; i++) {
                 betters.get(i).finalBalance(100);
